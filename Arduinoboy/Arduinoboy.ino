@@ -10,7 +10,7 @@
  ***************************************************************************
  ***************************************************************************
  *                                                                         *
- * Version: 1.3.4                                                          *
+ * Version: 1.3.4- Modified by Entropy Electronics for ProMicro                                                          *
  * Date:    May 19 2020                                                    *
  * Name:    Timothy Lamb                                                   *
  * Email:   trash80@gmail.com                                              *
@@ -188,11 +188,14 @@ int pinGBClock     = A0;    // Analog In 0 - clock out to gameboy
 int pinGBSerialOut = A1;    // Analog In 1 - serial data to gameboy
 int pinGBSerialIn  = A2;    // Analog In 2 - serial data from gameboy
 int pinMidiInputPower = 4; // power pin for midi input opto-isolator
-int pinStatusLed = 13; // Status LED
-int pinLeds[] = {12,11,10,9,8,13}; // LED Pins
-int pinButtonMode = 3; //toggle button for selecting the mode
+int pinStatusLed = 9; // Status LED
+int pinLeds[] = {3, 5, 6, 7, 8, 9}; // LED Pins
+//int pinStatusLed = 13; // Status LED
+//int pinLeds[] = {12,11,10,9,8,13}; // LED Pins
+int pinButtonMode = 10; //toggle button for selecting the mode
 
 HardwareSerial *serial = &Serial1;
+
 
 
 /***************************************************************************
@@ -431,7 +434,7 @@ void setup() {
 */
   for(int led=0;led<=5;led++) pinMode(pinLeds[led],OUTPUT);
   pinMode(pinStatusLed,OUTPUT);
-  pinMode(pinButtonMode,INPUT);
+  pinMode(pinButtonMode,INPUT_PULLUP);
 
   pinMode(pinGBClock,OUTPUT);
   pinMode(pinGBSerialIn,INPUT);
